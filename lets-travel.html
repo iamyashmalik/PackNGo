@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PackNGo - Plan Your Journey</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#ffb68d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#672c00",
+                        "tertiary": "#003f37",
+                        "outline": "#737784",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary-fixed": "#001d33",
+                        "on-surface-variant": "#434653",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "primary-container": "#1c507a",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "secondary-fixed": "#ffdbc9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed": "#cfe5ff",
+                        "tertiary-fixed-dim": "#59dbc7",
+                        "background": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#79f7e3",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary": "#9b4500",
+                        "on-secondary-fixed": "#331200",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-primary": "#9ccbfb",
+                        "primary": "#00395e",
+                        "surface-variant": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#114a73",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#50d3bf",
+                        "on-surface": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00584e",
+                        "surface-tint": "#31628d",
+                        "on-primary-container": "#94c3f3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fc8a40",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#763300"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .serif-headline {
+            font-family: 'Noto Serif', serif;
+        }
+        
+        /* List items styling */
+        #equipmentList li, #stopsList li, #budgetBreakdown li, #safetyList li, #contactsList li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e1e3e4;
+            color: #191c1d;
+        }
+        
+        #equipmentList li:last-child, #stopsList li:last-child, #budgetBreakdown li:last-child, #safetyList li:last-child, #contactsList li:last-child {
+            border-bottom: none;
+        }
+        
+        #equipmentList li:before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        
+        #stopsList li:before {
+            content: "📍 ";
+            margin-right: 4px;
+        }
+        
+        #budgetBreakdown li:before {
+            content: "💵 ";
+            margin-right: 4px;
+        }
+        
+        #safetyList li:before {
+            content: "⚡ ";
+            margin-right: 4px;
+        }
+        
+        #contactsList li:before {
+            content: "📞 ";
+            margin-right: 4px;
+        }
+
+        /* Hero Section with Background */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 57, 94, 0.7), rgba(155, 69, 0, 0.6)), 
+                        url('https://wallpapercave.com/wp/wp5388481.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: slideUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: #9b4500;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: slideUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-cta:hover {
+            background: #763300;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="text-on-background">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm h-20 flex justify-between items-center px-8 max-w-full">
+        <div class="text-2xl font-serif font-bold text-sky-900 italic">PackNGo</div>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="text-sky-900 border-b-2 border-orange-600 pb-1 font-bold tracking-tight" href="lets-travel.html">Plan</a>
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="travel-tips.html">Travel Tips</a>
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="about.html">About</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-slate-600 font-medium px-4 py-2 hover:text-sky-900 transition-colors">Login</button>
+            <button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-medium hover:opacity-90 active:scale-95 transition-all shadow-md">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2 class="hero-title">Explore India Like Never Before</h2>
+            <p class="hero-subtitle">Plan your perfect trip with PackNGo. From beaches to mountains, we've got you covered.</p>
+            <a href="#plan" class="hero-cta">Start Planning Now ✈️</a>
+        </div>
+    </section>
+
+    <!-- Main Content Canvas -->
+    <main id="plan" class="pb-20 min-h-screen px-4 flex flex-col items-center">
+        <!-- Header Section -->
+        <div class="max-w-3xl w-full mb-12 text-left pt-16">
+            <h1 class="serif-headline text-5xl italic text-primary font-bold mb-4">Curate Your Journey</h1>
+            <p class="text-on-surface-variant text-lg tracking-tight max-w-xl">Tell us about your ideal trip. We'll handle the logistics while you dream of the destination.</p>
+        </div>
+
+        <!-- Multi-Step Form Container -->
+        <div class="max-w-3xl w-full bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0_12px_32px_rgba(25,28,29,0.06)]">
+            <!-- Progress Bar -->
+            <div class="mb-12">
+                <div class="flex justify-between mb-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-primary">Step 1 of 2: Trip Details</span>
+                    <span id="progressPercent" class="text-xs font-bold uppercase tracking-widest text-secondary">0% Complete</span>
+                </div>
+                <div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-full bg-secondary w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <form id="travelForm" class="space-y-10">
+                <!-- Section 1: Demographics & Budget -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="flex flex-col gap-3">
+                        <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Traveler's Age</label>
+                        <input id="age" type="number" min="1" max="120" placeholder="Enter your age" class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none text-on-surface" required/>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex justify-between">
+                            <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Daily Budget</label>
+                            <span id="budgetDisplay" class="text-sm font-bold text-secondary">₹5000</span>
+                        </div>
+                        <input id="budget" type="range" min="1000" max="100000" step="1000" value="5000" class="w-full h-2 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-secondary"/>
+                        <div class="flex justify-between text-[10px] text-outline uppercase font-bold tracking-tighter">
+                            <span>Economy (₹1K)</span>
+                            <span>Luxury (₹100K)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Locations -->
+                <div class="space-y-8">
+                    <div class="relative flex flex-col gap-3">
+                        <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Starting From (Indian Cities)</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">location_on</span>
+                            <select id="startLocation" class="w-full bg-surface-container-low border-none rounded-lg py-4 pl-12 pr-4 focus:ring-2 focus:ring-secondary transition-all outline-none text-on-surface" required>
+                                <option value="">-- Select a city --</option>
+                                <option value="Delhi">Delhi - National Capital</option>
+                                <option value="Mumbai">Mumbai - Arabian Sea</option>
+                                <option value="Bangalore">Bangalore - IT Hub</option>
+                                <option value="Hyderabad">Hyderabad - Pearl City</option>
+                                <option value="Chennai">Chennai - Coastal City</option>
+                                <option value="Kolkata">Kolkata - City of Joy</option>
+                                <option value="Pune">Pune - Queen of Deccan</option>
+                                <option value="Ahmedabad">Ahmedabad - Textile City</option>
+                                <option value="Jaipur">Jaipur - Pink City</option>
+                                <option value="Agra">Agra - Taj Mahal</option>
+                                <option value="Goa">Goa - Beaches</option>
+                                <option value="Lucknow">Lucknow - Nawab City</option>
+                                <option value="Chandigarh">Chandigarh - Tricity</option>
+                                <option value="Indore">Indore - Smart City</option>
+                                <option value="Surat">Surat - Diamond City</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col gap-3">
+                        <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Final Destination</label>
+                        <div class="relative group">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">explore</span>
+                            <select id="destination" class="w-full bg-surface-container-low border-none rounded-lg py-4 pl-12 pr-4 focus:ring-2 focus:ring-secondary transition-all outline-none text-on-surface" required>
+                                <option value="">-- Select a city --</option>
+                                <option value="Delhi">Delhi - National Capital</option>
+                                <option value="Mumbai">Mumbai - Arabian Sea</option>
+                                <option value="Bangalore">Bangalore - IT Hub</option>
+                                <option value="Hyderabad">Hyderabad - Pearl City</option>
+                                <option value="Chennai">Chennai - Coastal City</option>
+                                <option value="Kolkata">Kolkata - City of Joy</option>
+                                <option value="Pune">Pune - Queen of Deccan</option>
+                                <option value="Ahmedabad">Ahmedabad - Textile City</option>
+                                <option value="Jaipur">Jaipur - Pink City</option>
+                                <option value="Agra">Agra - Taj Mahal</option>
+                                <option value="Goa">Goa - Beaches</option>
+                                <option value="Lucknow">Lucknow - Nawab City</option>
+                                <option value="Chandigarh">Chandigarh - Tricity</option>
+                                <option value="Indore">Indore - Smart City</option>
+                                <option value="Surat">Surat - Diamond City</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Transport Mode -->
+                <div class="flex flex-col gap-4">
+                    <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Preferred Mode of Transport</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Flight -->
+                        <label class="cursor-pointer group">
+                            <input class="hidden peer" name="transport" value="flight" type="radio"/>
+                            <div class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl border-2 border-transparent peer-checked:border-secondary peer-checked:bg-white transition-all hover:bg-surface-container-high">
+                                <span class="material-symbols-outlined text-3xl mb-2 text-primary group-hover:scale-110 transition-transform">flight</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Flight</span>
+                            </div>
+                        </label>
+                        <!-- Train -->
+                        <label class="cursor-pointer group">
+                            <input checked="" class="hidden peer" name="transport" value="train" type="radio"/>
+                            <div class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl border-2 border-transparent peer-checked:border-secondary peer-checked:bg-white transition-all hover:bg-surface-container-high">
+                                <span class="material-symbols-outlined text-3xl mb-2 text-primary group-hover:scale-110 transition-transform">train</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Train</span>
+                            </div>
+                        </label>
+                        <!-- Bus -->
+                        <label class="cursor-pointer group">
+                            <input class="hidden peer" name="transport" value="bus" type="radio"/>
+                            <div class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl border-2 border-transparent peer-checked:border-secondary peer-checked:bg-white transition-all hover:bg-surface-container-high">
+                                <span class="material-symbols-outlined text-3xl mb-2 text-primary group-hover:scale-110 transition-transform">directions_bus</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Bus</span>
+                            </div>
+                        </label>
+                        <!-- Car -->
+                        <label class="cursor-pointer group">
+                            <input class="hidden peer" name="transport" value="car" type="radio"/>
+                            <div class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl border-2 border-transparent peer-checked:border-secondary peer-checked:bg-white transition-all hover:bg-surface-container-high">
+                                <span class="material-symbols-outlined text-3xl mb-2 text-primary group-hover:scale-110 transition-transform">directions_car</span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Car</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Trip Duration -->
+                <div class="flex flex-col gap-3">
+                    <label class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Trip Duration (Days)</label>
+                    <input id="duration" type="number" min="1" max="365" placeholder="e.g., 7 days" class="w-full bg-surface-container-low border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all outline-none text-on-surface" />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button type="submit" class="w-full bg-secondary text-on-secondary px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-on-secondary-fixed-variant transition-all shadow-lg active:scale-95">
+                        Plan My Trip ✈️
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden max-w-5xl w-full mt-16">
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-md border-l-4 border-secondary">
+                    <p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">Route</p>
+                    <p id="routeInfo" class="text-2xl font-bold text-primary"></p>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-md border-l-4 border-tertiary">
+                    <p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">Distance</p>
+                    <p id="distanceInfo" class="text-2xl font-bold text-primary"></p>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-md border-l-4 border-primary">
+                    <p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">Travel Time</p>
+                    <p id="timeInfo" class="text-2xl font-bold text-primary"></p>
+                </div>
+                <div class="bg-surface-container-lowest rounded-xl p-6 shadow-md border-l-4 border-secondary-fixed">
+                    <p class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-2">Transport</p>
+                    <p id="transportInfo" class="text-2xl font-bold text-primary"></p>
+                </div>
+            </div>
+
+            <!-- Info Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Equipment Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-xl">backpack</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Packing List</h3>
+                    </div>
+                    <ul id="equipmentList" class="space-y-2 text-sm"></ul>
+                </div>
+
+                <!-- Stops Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-secondary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-xl">route</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Stops on Route</h3>
+                    </div>
+                    <ul id="stopsList" class="space-y-2 text-sm"></ul>
+                </div>
+
+                <!-- Budget Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-tertiary text-xl">payments</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Cost Estimate</h3>
+                    </div>
+                    <ul id="budgetBreakdown" class="space-y-2 text-sm"></ul>
+                </div>
+
+                <!-- Weather Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-xl">cloud</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Best Time to Visit</h3>
+                    </div>
+                    <div id="weatherInfo" class="text-sm"></div>
+                </div>
+
+                <!-- Safety Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-secondary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-xl">security</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Safety Tips</h3>
+                    </div>
+                    <ul id="safetyList" class="space-y-2 text-sm"></ul>
+                </div>
+
+                <!-- Emergency Contacts Card -->
+                <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-tertiary text-xl">emergency_share</span>
+                        </div>
+                        <h3 class="font-headline text-xl text-primary">Emergency Contacts</h3>
+                    </div>
+                    <ul id="contactsList" class="space-y-2 text-sm"></ul>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex gap-4 justify-center">
+                <button onclick="resetForm()" class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-on-secondary-fixed-variant transition-all shadow-lg">
+                    📋 Plan Another Trip
+                </button>
+                <button onclick="window.print()" class="bg-white text-secondary border-2 border-secondary px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-secondary hover:text-on-secondary transition-all shadow-lg">
+                    🖨️ Print Plan
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 px-8 bg-slate-100 border-t border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-center gap-8 max-w-7xl mx-auto">
+            <div class="flex flex-col gap-2">
+                <div class="text-lg font-serif font-bold text-sky-900 italic">PackNGo</div>
+                <p class="font-sans text-sm uppercase tracking-widest text-slate-500">© 2024 PackNGo. Curating your next horizon.</p>
+            </div>
+            <div class="flex flex-wrap gap-6">
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">About Us</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Privacy Policy</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Terms of Service</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include the travel script -->
+    <script src="travel-script.js"></script>
+    
+    <!-- Progress tracking and budget display -->
+    <script>
+        // Update budget display
+        document.getElementById('budget').addEventListener('input', function() {
+            document.getElementById('budgetDisplay').textContent = '₹' + this.value;
+        });
+
+        // Update progress bar
+        document.getElementById('travelForm').addEventListener('input', function() {
+            const age = document.getElementById('age').value;
+            const startLocation = document.getElementById('startLocation').value;
+            const destination = document.getElementById('destination').value;
+            
+            let completed = 0;
+            if (age) completed++;
+            if (startLocation) completed++;
+            if (destination) completed++;
+            
+            const progress = Math.floor((completed / 3) * 100);
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = progress + '% Complete';
+        });
+    </script>
+</body>
+</html>
