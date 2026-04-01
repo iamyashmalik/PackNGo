@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Us - PackNGo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#ffb68d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#672c00",
+                        "tertiary": "#003f37",
+                        "outline": "#737784",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary-fixed": "#001d33",
+                        "on-surface-variant": "#434653",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "primary-container": "#1c507a",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "secondary-fixed": "#ffdbc9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed": "#cfe5ff",
+                        "tertiary-fixed-dim": "#59dbc7",
+                        "background": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#79f7e3",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary": "#9b4500",
+                        "on-secondary-fixed": "#331200",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-primary": "#9ccbfb",
+                        "primary": "#00395e",
+                        "surface-variant": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#114a73",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#50d3bf",
+                        "on-surface": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00584e",
+                        "surface-tint": "#31628d",
+                        "on-primary-container": "#94c3f3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fc8a40",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#763300"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .serif-headline {
+            font-family: 'Noto Serif', serif;
+        }
+        .hero-section-about {
+            background: linear-gradient(135deg, rgba(0, 57, 94, 0.8), rgba(155, 69, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200') center/cover no-repeat;
+            background-attachment: fixed;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease-out;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: slideUp 1s ease-out 0.2s backwards;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .value-card {
+            transition: all 0.3s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .team-card {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: scale(1.05);
+        }
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9b4500, #00395e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm h-20 flex justify-between items-center px-8 max-w-full">
+        <div class="text-2xl font-serif font-bold text-sky-900 italic">PackNGo</div>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="lets-travel.html">Plan Trip</a>
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="travel-tips.html">Travel Tips</a>
+            <a class="text-sky-900 border-b-2 border-orange-600 pb-1 font-bold tracking-tight" href="about.html">About</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-slate-600 font-medium px-4 py-2 hover:text-sky-900 transition-colors">Login</button>
+            <button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-medium hover:opacity-90 active:scale-95 transition-all shadow-md">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section-about">
+        <div class="hero-content">
+            <h1 class="hero-title">About PackNGo</h1>
+            <p class="hero-subtitle">Empowering travelers to explore India with confidence, one trip at a time</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- What We Do Section -->
+            <section class="mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="serif-headline text-4xl text-primary font-bold mb-6">What We Do</h2>
+                        <p class="text-on-surface text-lg mb-4 leading-relaxed">
+                            PackNGo is a comprehensive travel planning platform designed to make your Indian journeys seamless and unforgettable. We believe that travel should be about creating memories, not managing logistics.
+                        </p>
+                        <p class="text-on-surface text-lg mb-4 leading-relaxed">
+                            Our intelligent trip planner analyzes your preferences, budget, and travel style to provide personalized recommendations. From packing lists to safety tips, from route planning to budget breakdowns, we handle all the details so you can focus on the adventure.
+                        </p>
+                        <p class="text-on-surface text-lg leading-relaxed">
+                            Whether you're exploring the beaches of Goa, the mountains of Himachal, or the bustling streets of major cities, PackNGo has the insights and tools to make your trip perfect.
+                        </p>
+                    </div>
+                    <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-12 text-white">
+                        <div class="text-6xl text-center mb-8">🌍</div>
+                        <h3 class="text-2xl font-bold text-center mb-6">By Travelers, For Travelers</h3>
+                        <p class="text-center opacity-90 mb-8">
+                            Created by passionate travel enthusiasts who have explored every corner of India and beyond.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="text-2xl">✈️</div>
+                                <span>15,000+ Happy Travelers</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="text-2xl">🏙️</div>
+                                <span>50+ Indian Cities Covered</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="text-2xl">📊</div>
+                                <span>100K+ Trip Plans Created</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Values Section -->
+            <section class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="serif-headline text-4xl text-primary font-bold mb-4">Our Core Values</h2>
+                    <p class="text-on-surface-variant text-lg">The principles that guide everything we do</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Value 1 -->
+                    <div class="value-card bg-surface-container-lowest rounded-xl p-8 shadow-md border-t-4 border-secondary">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="font-headline text-xl font-bold text-primary mb-3">Simplicity</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Making travel planning intuitive and accessible to everyone, regardless of experience level.
+                        </p>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="value-card bg-surface-container-lowest rounded-xl p-8 shadow-md border-t-4 border-tertiary">
+                        <div class="text-4xl mb-4">🤝</div>
+                        <h3 class="font-headline text-xl font-bold text-primary mb-3">Community</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Building a vibrant community of travelers who share experiences and inspire each other.
+                        </p>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="value-card bg-surface-container-lowest rounded-xl p-8 shadow-md border-t-4 border-primary">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h3 class="font-headline text-xl font-bold text-primary mb-3">Safety</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Prioritizing traveler safety with comprehensive guides and emergency information.
+                        </p>
+                    </div>
+
+                    <!-- Value 4 -->
+                    <div class="value-card bg-surface-container-lowest rounded-xl p-8 shadow-md border-t-4 border-secondary-fixed">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <h3 class="font-headline text-xl font-bold text-primary mb-3">Sustainability</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
+                            Promoting responsible travel that respects local cultures and environments.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Mission Section -->
+            <section class="mb-20 bg-gradient-to-r from-primary via-primary-container to-secondary rounded-2xl p-12 text-white">
+                <div class="max-w-3xl">
+                    <h2 class="serif-headline text-3xl font-bold mb-6">Our Mission</h2>
+                    <p class="text-lg leading-relaxed mb-6 opacity-95">
+                        At PackNGo, we're on a mission to transform how people plan and experience travel. We believe that every journey should be well-planned, safe, and memorable. Whether you're a first-time traveler or a seasoned explorer, we provide the tools, insights, and confidence you need to make the most of every adventure.
+                    </p>
+                    <p class="text-lg leading-relaxed opacity-95">
+                        We're committed to making travel accessible, affordable, and inspiring for everyone who dreames of exploring India's incredible diversity.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why Choose PackNGo -->
+            <section class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="serif-headline text-4xl text-primary font-bold mb-4">Why Choose PackNGo?</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">1</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">Personalized Planning</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Our AI-powered algorithm learns your preferences and creates customized trip plans tailored to your style, budget, and interests.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">2</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">Expert Insights</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Every recommendation is backed by real travel data, local knowledge, and traveler feedback from thousands of trips.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">3</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">All-in-One Platform</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            From route planning to budget breakdown, safety tips to emergency contacts, everything you need is in one place.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">4</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">Real-Time Updates</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Get up-to-date information on weather, traffic conditions, local events, and travel advisories.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">5</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">Budget Friendly</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Detailed cost breakdowns help you plan within your budget without compromising on experiences.
+                        </p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold">6</div>
+                            <h3 class="font-headline text-lg font-bold text-primary">Safety First</h3>
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Comprehensive safety information, emergency contacts, and travel advisories for peace of mind.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="serif-headline text-4xl text-primary font-bold mb-4">Meet Our Passionate Team</h2>
+                    <p class="text-on-surface-variant text-lg">A diverse group of travel enthusiasts working to make your journeys unforgettable</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="team-card bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg">
+                        <div class="team-avatar">🧳</div>
+                        <h3 class="font-headline text-lg font-bold text-primary mb-2">Sarah Adventures</h3>
+                        <p class="text-secondary font-semibold text-sm mb-3">Founder & CEO</p>
+                        <p class="text-on-surface-variant text-sm">
+                            Travel blogger and adventure seeker with 10 years of exploration across India.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="team-card bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg">
+                        <div class="team-avatar">🗺️</div>
+                        <h3 class="font-headline text-lg font-bold text-primary mb-2">Raj Route Master</h3>
+                        <p class="text-secondary font-semibold text-sm mb-3">Head of Planning</p>
+                        <p class="text-on-surface-variant text-sm">
+                            Expert in route optimization with deep knowledge of Indian geography and culture.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="team-card bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg">
+                        <div class="team-avatar">💡</div>
+                        <h3 class="font-headline text-lg font-bold text-primary mb-2">Maya Innovator</h3>
+                        <p class="text-secondary font-semibold text-sm mb-3">Product Designer</p>
+                        <p class="text-on-surface-variant text-sm">
+                            Creates intuitive, beautiful experiences that make travel planning effortless.
+                        </p>
+                    </div>
+
+                    <!-- Team Member 4 -->
+                    <div class="team-card bg-surface-container-lowest rounded-xl p-8 shadow-md hover:shadow-lg">
+                        <div class="team-avatar">🌍</div>
+                        <h3 class="font-headline text-lg font-bold text-primary mb-2">Vikram Explorer</h3>
+                        <p class="text-secondary font-semibold text-sm mb-3">Community Manager</p>
+                        <p class="text-on-surface-variant text-sm">
+                            Passionate about connecting travelers and building an inspiring community.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="serif-headline text-4xl text-primary font-bold mb-4">What Travelers Say</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md border-l-4 border-secondary">
+                        <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                        <p class="text-on-surface mb-4 italic">
+                            "PackNGo made planning my Goa trip so easy! The budget breakdown was incredibly accurate, and I felt safe with all the emergency information provided."
+                        </p>
+                        <p class="font-bold text-primary">- Priya from Mumbai</p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md border-l-4 border-secondary">
+                        <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                        <p class="text-on-surface mb-4 italic">
+                            "Finally, a travel app that actually understands what you need! The packing list was spot-on for my Himachal adventure."
+                        </p>
+                        <p class="font-bold text-primary">- Arjun from Delhi</p>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-8 shadow-md border-l-4 border-secondary">
+                        <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                        <p class="text-on-surface mb-4 italic">
+                            "As a first-time solo traveler, PackNGo gave me complete confidence. The tips and safety information were invaluable!"
+                        </p>
+                        <p class="font-bold text-primary">- Sneha from Bangalore</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Developer Section -->
+            <section class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="serif-headline text-4xl text-primary font-bold mb-4">Meet the Developer</h2>
+                    <p class="text-on-surface-variant text-lg">The visionary behind PackNGo</p>
+                </div>
+                <div class="bg-gradient-to-br from-surface-container-low to-surface-container-lowest rounded-2xl p-12 shadow-lg border-2 border-secondary">
+                    <div class="max-w-3xl mx-auto">
+                        <div class="flex flex-col md:flex-row items-center gap-12">
+                            <!-- Developer Image -->
+                            <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg border-4 border-secondary flex-shrink-0">
+                                <img src="developer-profile.jpg" alt="YASH MALIK" class="w-full h-full object-cover" />
+                            </div>
+                            
+                            <!-- Developer Info -->
+                            <div class="flex-1">
+                                <h3 class="serif-headline text-3xl font-bold text-primary mb-2">YASH MALIK</h3>
+                                <p class="text-secondary font-bold text-lg mb-6">Full Stack Developer & Travel Enthusiast</p>
+                                
+                                <!-- Details -->
+                                <div class="space-y-4 mb-8">
+                                    <div class="flex items-start gap-4 bg-surface-container rounded-lg p-4">
+                                        <div class="text-2xl">🎓</div>
+                                        <div>
+                                            <p class="text-on-surface-variant text-sm font-semibold mb-1">STUDENT ID</p>
+                                            <p class="text-primary font-bold text-lg">2511981267</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4 bg-surface-container rounded-lg p-4">
+                                        <div class="text-2xl">✉️</div>
+                                        <div>
+                                            <p class="text-on-surface-variant text-sm font-semibold mb-1">EMAIL</p>
+                                            <p class="text-primary font-bold text-sm break-all">yash1267.be25@chitkarauniversity.edu.in</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-4 bg-gradient-to-r from-primary to-secondary rounded-lg p-4 text-white">
+                                        <div class="text-2xl">🍽️</div>
+                                        <div>
+                                            <p class="text-white text-sm font-semibold mb-1 opacity-90">OTHER PROJECTS</p>
+                                            <p class="text-white font-bold">Restaurant Landing Page</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-on-surface-variant text-base leading-relaxed">
+                                    Crafted PackNGo with a passion for simplifying travel planning and making Indian journeys accessible to everyone. A dedicated full-stack developer combining technical expertise with a love for exploration, creating innovative solutions that empower travelers to discover India's incredible diversity with confidence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="bg-gradient-to-r from-secondary to-primary rounded-2xl p-12 text-white text-center">
+                <h2 class="serif-headline text-3xl font-bold mb-6">Ready to Start Your Adventure?</h2>
+                <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+                    Join thousands of travelers who have already discovered how easy trip planning can be with PackNGo.
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                    <a href="lets-travel.html" class="bg-white text-primary px-10 py-4 rounded-full font-bold uppercase tracking-widest inline-block hover:opacity-90 transition-all shadow-lg">
+                        Plan Your Trip Now
+                    </a>
+                    <a href="travel-tips.html" class="border-2 border-white text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest inline-block hover:bg-white hover:text-primary transition-all shadow-lg">
+                        Explore Travel Tips
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 px-8 bg-slate-100 border-t border-slate-200 mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-center gap-8 max-w-7xl mx-auto">
+            <div class="flex flex-col gap-2">
+                <div class="text-lg font-serif font-bold text-sky-900 italic">PackNGo</div>
+                <p class="font-sans text-sm uppercase tracking-widest text-slate-500">© 2024 PackNGo. Curating your next horizon.</p>
+            </div>
+            <div class="flex flex-wrap gap-6">
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="about.html">About Us</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Privacy Policy</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Terms of Service</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
