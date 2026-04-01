@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>PackNGo - Plan Your Perfect Indian Journey</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-fixed-dim": "#ffb68d",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#672c00",
+            "tertiary": "#003f37",
+            "outline": "#737784",
+            "outline-variant": "#c3c6d5",
+            "on-primary-fixed": "#001d33",
+            "on-surface-variant": "#434653",
+            "surface-dim": "#d9dadb",
+            "on-tertiary": "#ffffff",
+            "primary-fixed-dim": "#9ccbfb",
+            "primary-container": "#1c507a",
+            "on-tertiary-fixed-variant": "#005047",
+            "surface-bright": "#f8f9fa",
+            "on-error": "#ffffff",
+            "inverse-surface": "#2e3132",
+            "on-background": "#191c1d",
+            "secondary-fixed": "#ffdbc9",
+            "inverse-on-surface": "#f0f1f2",
+            "surface-container-low": "#f3f4f5",
+            "primary-fixed": "#cfe5ff",
+            "tertiary-fixed-dim": "#59dbc7",
+            "background": "#f8f9fa",
+            "surface-container": "#edeeef",
+            "tertiary-fixed": "#79f7e3",
+            "on-tertiary-fixed": "#00201c",
+            "secondary": "#9b4500",
+            "on-secondary-fixed": "#331200",
+            "surface-container-highest": "#e1e3e4",
+            "inverse-primary": "#9ccbfb",
+            "primary": "#00395e",
+            "surface-variant": "#e1e3e4",
+            "error": "#ba1a1a",
+            "on-primary-fixed-variant": "#114a73",
+            "surface": "#f8f9fa",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#50d3bf",
+            "on-surface": "#191c1d",
+            "error-container": "#ffdad6",
+            "tertiary-container": "#00584e",
+            "surface-tint": "#31628d",
+            "on-primary-container": "#94c3f3",
+            "on-primary": "#ffffff",
+            "secondary-container": "#fc8a40",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#e7e8e9",
+            "on-secondary-fixed-variant": "#763300"
+          },
+          fontFamily: {
+            "headline": ["Noto Serif"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .serif-headline {
+      font-family: 'Noto Serif', serif;
+    }
+    
+    /* Hero Section */
+    .landing-hero {
+      background: linear-gradient(135deg, rgba(0, 57, 94, 0.9), rgba(155, 69, 0, 0.8)), 
+                  url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600') center/cover no-repeat;
+      background-attachment: fixed;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 10;
+      padding: 40px 20px;
+      max-width: 800px;
+    }
+
+    .landing-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      animation: slideDown 1s ease-out;
+    }
+
+    .landing-subtitle {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+      animation: slideUp 1s ease-out 0.2s backwards;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: slideUp 1s ease-out 0.4s backwards;
+    }
+
+    .cta-primary, .cta-secondary {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-primary {
+      background: #9b4500;
+      color: white;
+    }
+
+    .cta-primary:hover {
+      background: #763300;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .cta-secondary {
+      background: white;
+      color: #00395e;
+    }
+
+    .cta-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      background: #f8f9fa;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+    }
+  </style>
+</head>
+<body class="text-on-background">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm h-20 flex justify-between items-center px-8 max-w-full">
+    <div class="text-2xl font-serif font-bold text-sky-900 italic">PackNGo</div>
+    <div class="hidden md:flex gap-8 items-center">
+      <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="lets-travel.html">Plan Trip</a>
+      <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="travel-tips.html">Travel Tips</a>
+      <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="about.html">About</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="text-slate-600 font-medium px-4 py-2 hover:text-sky-900 transition-colors">Login</button>
+      <button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-medium hover:opacity-90 active:scale-95 transition-all shadow-md">Sign Up</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="landing-hero">
+    <div class="hero-content">
+      <h1 class="landing-title">Explore India Like Never Before</h1>
+      <p class="landing-subtitle">Smart trip planning for every traveler. From beaches to mountains, we've got you covered.</p>
+      <div class="cta-buttons">
+        <a href="lets-travel.html" class="cta-primary">Start Planning ✈️</a>
+        <a href="about.html" class="cta-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <!-- Features Section -->
+      <section class="mb-20">
+        <div class="text-center mb-16">
+          <h2 class="serif-headline text-5xl text-primary font-bold mb-4">Why Choose PackNGo?</h2>
+          <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Everything you need to plan the perfect Indian adventure</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <!-- Feature 1 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-secondary">
+            <div class="text-5xl mb-6">🎯</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Smart Planning</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              AI-powered trip planning that understands your preferences, budget, and travel style to create the perfect itinerary.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-tertiary">
+            <div class="text-5xl mb-6">💰</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Budget Friendly</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Detailed cost breakdowns for accommodation, transport, food, and more. Travel smart without overspending.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-primary">
+            <div class="text-5xl mb-6">🔒</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Safety First</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Comprehensive safety tips, emergency contacts, and travel advisories for every destination in India.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-secondary-fixed">
+            <div class="text-5xl mb-6">📋</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Complete Checklists</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Smart packing lists, equipment recommendations, and travel checklists tailored to your trip specifics.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-primary-fixed">
+            <div class="text-5xl mb-6">🗺️</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Route Guidance</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Detailed route planning with stops, petrol pumps, food stops, and real-time distance calculations.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-card bg-surface-container-lowest rounded-xl p-10 shadow-md border-t-4 border-tertiary-fixed">
+            <div class="text-5xl mb-6">🌡️</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Weather Insights</h3>
+            <p class="text-on-surface-variant text-base leading-relaxed">
+              Best time to visit each destination, weather patterns, and climate-specific packing recommendations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-16 text-white mb-20">
+        <div class="text-center mb-12">
+          <h2 class="serif-headline text-4xl font-bold mb-4">Trusted by Travelers Across India</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold mb-2">15K+</div>
+            <p class="text-sm opacity-90">Happy Travelers</p>
+          </div>
+          <div>
+            <div class="text-4xl font-bold mb-2">100K+</div>
+            <p class="text-sm opacity-90">Trips Planned</p>
+          </div>
+          <div>
+            <div class="text-4xl font-bold mb-2">50+</div>
+            <p class="text-sm opacity-90">Cities Covered</p>
+          </div>
+          <div>
+            <div class="text-4xl font-bold mb-2">4.9★</div>
+            <p class="text-sm opacity-90">User Rating</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="mb-20">
+        <div class="text-center mb-16">
+          <h2 class="serif-headline text-5xl text-primary font-bold mb-4">How PackNGo Works</h2>
+          <p class="text-on-surface-variant text-lg">Three simple steps to your perfect trip</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">1</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Enter Your Details</h3>
+            <p class="text-on-surface-variant">Tell us about your age, budget, starting point, destination, and preferred mode of transport.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">2</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Get Smart Recommendations</h3>
+            <p class="text-on-surface-variant">Our AI analyzes your preferences and generates personalized trip plans with all the details.</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">3</div>
+            <h3 class="font-headline text-2xl font-bold text-primary mb-4">Travel with Confidence</h3>
+            <p class="text-on-surface-variant">Print your plan or save it. You're all set with packing lists, safety tips, and budget breakdown.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="bg-gradient-to-r from-secondary to-primary rounded-2xl p-16 text-white text-center">
+        <h2 class="serif-headline text-4xl font-bold mb-6">Ready to Explore India?</h2>
+        <p class="text-lg opacity-90 mb-10 max-w-2xl mx-auto">
+          Join thousands of travelers who have already planned amazing trips with PackNGo. Start your adventure today!
+        </p>
+        <a href="lets-travel.html" class="bg-white text-secondary px-12 py-4 rounded-full font-bold uppercase tracking-widest inline-block hover:opacity-90 transition-all shadow-lg">
+          Plan Your Trip Now ✈️
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-12 px-8 bg-slate-100 border-t border-slate-200 mt-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-center gap-8 max-w-7xl mx-auto">
+      <div class="flex flex-col gap-2">
+        <div class="text-lg font-serif font-bold text-sky-900 italic">PackNGo</div>
+        <p class="font-sans text-sm uppercase tracking-widest text-slate-500">© 2024 PackNGo. Curating your next horizon.</p>
+      </div>
+      <div class="flex flex-wrap gap-6">
+        <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="about.html">About Us</a>
+        <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Privacy Policy</a>
+        <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Terms of Service</a>
+        <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+  <h1>Let's Travel</h1>
+
+  <input type="number" id="age" placeholder="Enter your age">
+  <input type="number" id="budget" placeholder="Enter your budget (₹)">
+  <input type="text" id="start" placeholder="Starting location">
+  <input type="text" id="destination" placeholder="Destination">
+
+  <select id="transport">
+    <option value="">Select Transport</option>
+    <option value="car">Car</option>
+    <option value="bike">Bike</option>
+    <option value="train">Train</option>
+    <option value="bus">Bus</option>
+  </select>
+
+  <button onclick="planTrip()">Plan My Trip</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+function calculateDistance(start, destination) {
+  // Dummy distance logic (since no API allowed)
+  let base = Math.abs(start.length - destination.length) * 50;
+  return base + 100;
+}
+
+function getEssentials(age, distance) {
+  let items = [];
+
+  if (age < 18) {
+    items.push("ID Card", "Snacks", "Water Bottle", "Extra Clothes");
+  } else if (age < 50) {
+    items.push("Power Bank", "First Aid Kit", "Water Bottle", "Snacks");
+  } else {
+    items.push("Medicines", "Comfort Pillow", "Warm Clothes", "Water Bottle");
+  }
+
+  if (distance > 300) {
+    items.push("Travel Pillow", "Charger", "Extra Food");
+  }
+
+  return items;
+}
+
+function getStops(distance, transport) {
+  let stops = [];
+
+  let fuelStops = Math.floor(distance / 150);
+  for (let i = 1; i <= fuelStops; i++) {
+    if (transport === "car" || transport === "bike") {
+      stops.push(`Petrol Pump Stop ${i}`);
+    }
+    stops.push(`Food Stop ${i}`);
+  }
+
+  return stops;
+}
+
+function planTrip() {
+  let age = document.getElementById("age").value;
+  let budget = document.getElementById("budget").value;
+  let start = document.getElementById("start").value;
+  let destination = document.getElementById("destination").value;
+  let transport = document.getElementById("transport").value;
+
+  if (!age || !budget || !start || !destination || !transport) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  let distance = calculateDistance(start, destination);
+  let essentials = getEssentials(age, distance);
+  let stops = getStops(distance, transport);
+
+  let output = `<h3>Trip Summary</h3>
+                <p><b>Distance:</b> ${distance} km</p>
+                <p><b>Estimated Budget:</b> ₹${budget}</p>
+
+                <h3>Essentials to Carry:</h3>
+                <ul>${essentials.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                <h3>Suggested Stops:</h3>
+                <ul>${stops.map(stop => `<li>${stop}</li>`).join("")}</ul>`;
+
+  document.getElementById("output").innerHTML = output;
+}
+</script>
+
+</body>
+</html>
