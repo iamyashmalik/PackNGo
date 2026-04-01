@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Travel Tips - PackNGo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#ffb68d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#672c00",
+                        "tertiary": "#003f37",
+                        "outline": "#737784",
+                        "outline-variant": "#c3c6d5",
+                        "on-primary-fixed": "#001d33",
+                        "on-surface-variant": "#434653",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#9ccbfb",
+                        "primary-container": "#1c507a",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface-bright": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "secondary-fixed": "#ffdbc9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed": "#cfe5ff",
+                        "tertiary-fixed-dim": "#59dbc7",
+                        "background": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#79f7e3",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary": "#9b4500",
+                        "on-secondary-fixed": "#331200",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-primary": "#9ccbfb",
+                        "primary": "#00395e",
+                        "surface-variant": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#114a73",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#50d3bf",
+                        "on-surface": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#00584e",
+                        "surface-tint": "#31628d",
+                        "on-primary-container": "#94c3f3",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fc8a40",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#763300"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .serif-headline {
+            font-family: 'Noto Serif', serif;
+        }
+        .hero-section-tips {
+            background: linear-gradient(135deg, rgba(0, 57, 94, 0.8), rgba(155, 69, 0, 0.7)), 
+                        url('https://wallpapercave.com/wp/wp6506903.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 40px 20px;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease-out;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: slideUp 1s ease-out 0.2s backwards;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .tip-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #9b4500;
+        }
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-left-color: #00395e;
+        }
+    </style>
+</head>
+<body class="text-on-background">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm h-20 flex justify-between items-center px-8 max-w-full">
+        <div class="text-2xl font-serif font-bold text-sky-900 italic">PackNGo</div>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="lets-travel.html">Plan Trip</a>
+            <a class="text-sky-900 border-b-2 border-orange-600 pb-1 font-bold tracking-tight" href="travel-tips.html">Travel Tips</a>
+            <a class="text-slate-600 font-medium hover:text-orange-600 transition-colors tracking-tight" href="about.html">About</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-slate-600 font-medium px-4 py-2 hover:text-sky-900 transition-colors">Login</button>
+            <button class="bg-secondary text-on-secondary px-6 py-2 rounded-full font-medium hover:opacity-90 active:scale-95 transition-all shadow-md">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section-tips">
+        <div class="hero-content">
+            <h1 class="hero-title">Travel Tips & Tricks 💡</h1>
+            <p class="hero-subtitle">Master the art of traveling smart</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Introduction -->
+            <div class="mb-20 text-center">
+                <h2 class="serif-headline text-4xl text-primary font-bold mb-4">Essential Travel Wisdom</h2>
+                <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">Whether you're a seasoned traveler or planning your first adventure, these tips will help you make the most of your journey.</p>
+            </div>
+
+            <!-- Tips Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- Tip 1: Packing -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center text-2xl">🎒</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Smart Packing</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Roll, don't fold:</strong> Rolling clothes saves space and reduces wrinkles</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Pack cubes:</strong> Organize items by category for easy access</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Wear heavy items:</strong> Use your bulkiest clothes while traveling</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Keep backups:</strong> Pack copies of important documents</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tip 2: Money Management -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-secondary-fixed rounded-lg flex items-center justify-center text-2xl">💰</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Money Management</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Notify your bank:</strong> Tell them about your travel dates</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Carry multiple options:</strong> Credit card, debit card, and cash</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Use ATMs wisely:</strong> Withdraw at banks to avoid high fees</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Track expenses:</strong> Keep receipts and monitor spending</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tip 3: Health & Safety -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center text-2xl">🏥</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Health & Safety</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Carry medications:</strong> Keep personal medicines in original bottles</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Stay hydrated:</strong> Drink plenty of water, especially in hot climates</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Avoid tap water:</strong> Drink bottled or filtered water when unsure</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Get travel insurance:</strong> Protects against emergency situations</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tip 4: Navigation -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center text-2xl">🗺️</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Getting Around</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Download maps:</strong> Save offline maps before traveling</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Use local transport:</strong> Experience authentic travel like locals</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Share your location:</strong> Keep loved ones informed</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Research neighborhoods:</strong> Know safe areas before visiting</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tip 5: Photography -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-secondary-fixed rounded-lg flex items-center justify-center text-2xl">📸</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Photography Tips</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Golden hour:</strong> Shoot during sunrise/sunset for best light</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Backup your photos:</strong> Use cloud storage for safety</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Respect locals:</strong> Always ask before photographing people</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Explore beyond landmarks:</strong> Capture authentic local culture</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tip 6: Accommodation -->
+                <div class="tip-card bg-surface-container-lowest rounded-xl p-8 shadow-md">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center text-2xl">🏨</div>
+                        <h3 class="font-headline text-xl text-primary font-bold">Choosing Lodging</h3>
+                    </div>
+                    <ul class="space-y-3 text-on-surface">
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Read reviews:</strong> Check multiple platforms for honest feedback</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Check location:</strong> Ensure proximity to attractions and transport</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Book in advance:</strong> Secure better rates and availability</span>
+                        </li>
+                        <li class="flex gap-2">
+                            <span class="text-secondary font-bold">•</span>
+                            <span><strong>Verify amenities:</strong> Confirm Wi-Fi, breakfast, and services</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick Tips Section -->
+            <section class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white mb-16">
+                <h3 class="serif-headline text-3xl font-bold mb-8 text-center">Quick Travel Hacks</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">✈️</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Flexible Dates</h4>
+                            <p class="text-sm opacity-90">Flying mid-week is often cheaper than weekends</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🎫</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Early Booking</h4>
+                            <p class="text-sm opacity-90">Book 2-3 months ahead for best flight deals</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🧳</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Light Luggage</h4>
+                            <p class="text-sm opacity-90">Travel carry-on only to save money and time</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🗓️</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Off-Season Travel</h4>
+                            <p class="text-sm opacity-90">Visit during shoulder seasons for fewer crowds</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🏷️</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Price Alerts</h4>
+                            <p class="text-sm opacity-90">Set alerts on flight booking sites for deals</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-2xl flex-shrink-0">🌍</div>
+                        <div>
+                            <h4 class="font-bold mb-2">Local Currency</h4>
+                            <p class="text-sm opacity-90">Exchange money at banks, not tourist shops</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <div class="text-center">
+                <h3 class="serif-headline text-3xl font-bold text-primary mb-6">Ready to Plan Your Journey?</h3>
+                <a href="lets-travel.html" class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-bold uppercase tracking-widest inline-block hover:opacity-90 transition-all shadow-lg">
+                    Start Planning Your Trip ✈️
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 px-8 bg-slate-100 border-t border-slate-200 mt-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:flex lg:justify-between items-center gap-8 max-w-7xl mx-auto">
+            <div class="flex flex-col gap-2">
+                <div class="text-lg font-serif font-bold text-sky-900 italic">PackNGo</div>
+                <p class="font-sans text-sm uppercase tracking-widest text-slate-500">© 2024 PackNGo. Curating your next horizon.</p>
+            </div>
+            <div class="flex flex-wrap gap-6">
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="about.html">About Us</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Privacy Policy</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Terms of Service</a>
+                <a class="font-sans text-sm uppercase tracking-widest text-slate-500 hover:text-sky-900 transition-colors" href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
